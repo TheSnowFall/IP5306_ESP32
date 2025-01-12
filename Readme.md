@@ -24,7 +24,7 @@ The **TTGO T-Call** has a major design flaw: the **KEY** pin is connected to the
 
 Below is a schematic illustrating this issue:
 
-![TTGO T-Call Reset Issue](./IP5306_ESP32//documental_assets/TTGO%20Ip5306_reset)
+![TTGO T-Call Reset Issue](./IP5306_ESP32/documental_assets/TTGO%20Ip5306_reset)
 
 
 
