@@ -1,2 +1,12 @@
-# Auto detect text files and perform LF normalization
+# Ensure all text files use LF
 * text=auto
+
+# Explicitly set LF for specific file types
+*.cpp text eol=lf
+*.h text eol=lf
+*.ino text eol=lf
+
+# Keep binary files untouched
+*.zip binary
+*.png binary
+*.jpg binary
