@@ -18,9 +18,9 @@ These APIs have been tested on the [**TTGO T-Call SIM800L**](https://lilygo.cc/p
 
 ## Known Issue with TTGO T-Call
 
-The **TTGO T-Call** has a major design flaw: the **KEY** pin is connected to the **RESET** pin. This causes the following issue:
+The **TTGO T-Call** has a major design flaw: the **KEY** pin is connected to the ESP32-Wrover-E/B **RESET** pin. This causes the following issue:
 
-- If the TTGO is running on battery power and the battery fully discharges or is removed while the device is running, the ESP-Wrover-E/B **RESET** button must be pressed to restart the board.
+- If the TTGO is running on battery power and the battery fully discharges or is removed while the device is running, the ESP32-Wrover-E/B **RESET** button must be pressed to restart the board.
 
 Below is a schematic illustrating this issue:
 
