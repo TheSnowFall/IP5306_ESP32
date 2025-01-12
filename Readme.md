@@ -158,5 +158,3 @@ Feel free to submit issues and pull requests to improve the library.
 
 ---
 
-**h**
-
