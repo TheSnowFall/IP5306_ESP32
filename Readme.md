@@ -325,6 +325,217 @@ Serial.print("Charging State: ");
 Serial.println(chargeState ? "Charging" : "Not Charging");
 ```
 
+#Speceial Features related to Charging/Discharging
+
+## Charging Full Stop Voltage
+
+### `uint8_t IP5306_GetChargingFullStopVoltage()`
+Checks the configured charging full-stop voltage.
+
+- **Returns**:
+  - `0`: 4.14V
+  - `1`: 4.17V (recommended)
+  - `2`: 4.185V
+  - `3`: 4.2V
+
+**Usage:**
+```cpp
+uint8_t stopVoltage = IP5306_GetChargingFullStopVoltage();
+Serial.print("Charging Full Stop Voltage: ");
+Serial.println(stopVoltage == 0 ? "4.14V" : stopVoltage == 1 ? "4.17V" : stopVoltage == 2 ? "4.185V" : "4.2V");
+```
+
+### `void IP5306_SetChargingFullStopVoltage(uint8_t value)`
+Configures the charging full-stop voltage.
+
+- **Parameters**:
+  - `value`:
+    - `0`: 4.14V
+    - `1`: 4.17V (recommended)
+    - `2`: 4.185V
+    - `3`: 4.2V
+
+
+**Usage:**
+```cpp
+IP5306_SetChargingFullStopVoltage(1);
+Serial.println("Charging Full Stop Voltage set to 4.17V");
+```
+
+---
+
+## Charge Under-Voltage Loop
+
+### `uint8_t IP5306_GetChargeUnderVoltageLoop()`
+Gets the current under-voltage loop setting for charging.
+
+- **Returns**: 
+  - Corresponds to `VOUT = 4.45V + (value * 0.05V)`
+
+**Usage:**
+```cpp
+uint8_t underVoltage = IP5306_GetChargeUnderVoltageLoop();
+Serial.print("Charge Under-Voltage Loop: VOUT = ");
+Serial.println(4.45 + underVoltage * 0.05, 2);
+```
+
+### `void IP5306_SetChargeUnderVoltageLoop(uint8_t value)`
+Sets the under-voltage loop for charging.
+
+- **Parameters**:
+  - `value`: Corresponds to `VOUT = 4.45V + (value * 0.05V)`
+
+**Recommended Value**: 2 (4.55V)
+
+**Usage:**
+```cpp
+IP5306_SetChargeUnderVoltageLoop(2);
+Serial.println("Charge Under-Voltage Loop set to 4.55V");
+```
+
+---
+
+## End Charge Current Detection
+
+### `uint8_t IP5306_GetEndChargeCurrentDetection()`
+Gets the configured end charge current detection threshold.
+
+- **Returns**: 
+  - `0`: 200mA
+  - `1`: 400mA
+  - `2`: 500mA (default)
+  - `3`: 600mA
+
+**Usage:**
+```cpp
+uint8_t endChargeCurrent = IP5306_GetEndChargeCurrentDetection();
+Serial.print("End Charge Current Detection: ");
+Serial.println(endChargeCurrent == 0 ? "200mA" : endChargeCurrent == 1 ? "400mA" : endChargeCurrent == 2 ? "500mA" : "600mA");
+```
+
+### `void IP5306_SetEndChargeCurrentDetection(uint8_t value)`
+Sets the end charge current detection threshold.
+
+- **Parameters**:
+  - `value`:
+    - `0`: 200mA
+    - `1`: 400mA
+    - `2`: 500mA (recommended)
+    - `3`: 600mA
+
+
+**Usage:**
+```cpp
+IP5306_SetEndChargeCurrentDetection(2);
+Serial.println("End Charge Current Detection set to 500mA");
+```
+
+---
+
+## Voltage Pressure
+
+### `uint8_t IP5306_GetVoltagePressure()`
+Gets the current voltage pressure adjustment.
+
+- **Returns**:
+  - `0`: None
+  - `1`: +14mV
+  - `2`: +28mV (recommended)
+  - `3`: +42mV
+
+**Usage:**
+```cpp
+uint8_t pressure = IP5306_GetVoltagePressure();
+Serial.print("Voltage Pressure: +");
+Serial.println(pressure == 0 ? "0mV" : pressure == 1 ? "14mV" : pressure == 2 ? "28mV" : "42mV");
+```
+
+### `void IP5306_SetVoltagePressure(uint8_t value)`
+Sets the voltage pressure adjustment.
+
+- **Parameters**: 
+  - `value`:
+    - `0`: None
+    - `1`: +14mV
+    - `2`: +28mV (recommended)
+    - `3`: +42mV
+
+
+**Usage:**
+```cpp
+IP5306_SetVoltagePressure(2);
+Serial.println("Voltage Pressure set to +28mV");
+```
+
+---
+
+## Charge Cutoff Voltage
+
+### `uint8_t IP5306_GetChargeCutoffVoltage()`
+Gets the configured charge cutoff voltage.
+
+- **Returns**:
+  - `0`: 4.2V
+  - `1`: 4.3V
+  - `2`: 4.35V
+  - `3`: 4.4V
+
+**Usage:**
+```cpp
+uint8_t cutoffVoltage = IP5306_GetChargeCutoffVoltage();
+Serial.print("Charge Cutoff Voltage: ");
+Serial.println(cutoffVoltage == 0 ? "4.2V" : cutoffVoltage == 1 ? "4.3V" : cutoffVoltage == 2 ? "4.35V" : "4.4V");
+```
+
+### `void IP5306_SetChargeCutoffVoltage(uint8_t value)`
+Sets the charge cutoff voltage.
+
+- **Parameters**: 
+  - `value`:
+    - `0`: 4.2V (recommended)
+    - `1`: 4.3V
+    - `2`: 4.35V
+    - `3`: 4.4V
+
+**Usage:**
+```cpp
+IP5306_SetChargeCutoffVoltage(0);
+Serial.println("Charge Cutoff Voltage set to 4.2V");
+```
+
+---
+
+## VIN Input Current
+
+### `uint8_t IP5306_GetVinCurrent()`
+Gets the configured input current from VIN.
+
+- **Returns**:
+  - Current in mA: `50 + (value * 100)`
+
+**Usage:**
+```cpp
+uint8_t vinCurrent = IP5306_GetVinCurrent();
+Serial.print("VIN Current: ");
+Serial.print(50 + vinCurrent * 100);
+Serial.println("mA");
+```
+
+### `void IP5306_SetVinCurrent(uint8_t value)`
+Sets the input current from VIN.
+
+- **Parameters**: 
+  - `value`: Corresponds to `Current (mA) = 50 + (value * 100)`
+
+**Recommended Value**: 2250mA
+
+**Usage:**
+```cpp
+IP5306_SetVinCurrent(22);
+Serial.println("VIN Current set to 2250mA");
+```
+
+
 ## Contributing
 
 Feel free to submit issues and pull requests to improve the library.
