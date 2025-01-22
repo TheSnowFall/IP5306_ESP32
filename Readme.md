@@ -325,7 +325,7 @@ Serial.print("Charging State: ");
 Serial.println(chargeState ? "Charging" : "Not Charging");
 ```
 
-#Speceial Features related to Charging/Discharging
+## Special Features related to Charging/Discharging
 
 ## Charging Full Stop Voltage
 
