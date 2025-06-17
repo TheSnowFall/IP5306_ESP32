@@ -9,7 +9,7 @@ The **IP5306_ESP32** library is designed to interact with the IP5306 power manag
 
 ## Changes Made
 
-- Adjusted the library to improve compatibility with ESP32.
+- Adjusted the library on compatibility with ESP32.
 - Uploaded a working example sketch to demonstrate API usage.
 
 ## Tested Hardware
