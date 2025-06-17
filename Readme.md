@@ -1,6 +1,6 @@
 # IP5306_ESP32 Library
 
-The **IP5306_ESP32** library is designed to interact with the IP5306 power management IC using I2C. This library is inferred from the original [IP5306 Arduino Library](https://github.com/Al1c3-1337/IP5306-arduino/tree/master), with some minor changes.
+The **IP5306_ESP32** library is designed to interact with the IP5306 power management IC using I2C. This library is inferred or inspired from the original [IP5306 Arduino Library](https://github.com/Al1c3-1337/IP5306-arduino/tree/master), with some minor changes.
 
 ## Features
 
